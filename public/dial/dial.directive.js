@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('app', [])
+    angular.module('app')
         .directive('dial', function($filter) {
             var directive = {
                 replace: false,
