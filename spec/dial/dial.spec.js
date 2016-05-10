@@ -27,14 +27,32 @@ describe('dial directive', function() {
         expect(true).toEqual(true);
     });
 
-    it('contain the sample dial text', function() {
-        var findh1 = directiveElem.find('h1');
-        expect(findh1.text()).toEqual('Sample Widget');
-    });
+    // it('contain the sample dial text', function() {
+    //     var findh1 = directiveElem.find('h1');
+    //     expect(findh1.text()).toEqual('Sample Widget');
+    // });
     
-    it('should have min max and value on the scope', function() {
+    it('should have min, max and value on the scope', function() {
         expect(scope.min).toBeDefined();
         expect(scope.max).toBeDefined();
         expect(scope.value).toBeDefined();
+    });
+
+    it('should display the min, max and value', function() {
+
+        var queryResult = directiveElem[0].querySelector('#value');
+        var wrappedQueryResult = angular.element(queryResult);
+
+        expect(wrappedQueryResult.text()).toEqual(scope.value.toString());
+
+        queryResult = directiveElem[0].querySelector('#min');
+        wrappedQueryResult = angular.element(queryResult);
+
+        expect(wrappedQueryResult.text()).toEqual(scope.min.toString());
+
+        queryResult = directiveElem[0].querySelector('#max');
+        wrappedQueryResult = angular.element(queryResult);
+
+        expect(wrappedQueryResult.text()).toEqual(scope.max.toString());
     });
 });
