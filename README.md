@@ -38,3 +38,4 @@ $ npm test
 * Add data verification to dialservice
 * Add unit tests for different values of returned data
 * Properly mock out the dialservice
+* Implement a visual display
