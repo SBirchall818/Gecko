@@ -1,43 +1,49 @@
 <style>
-a.gallerypic{
-  /*width:140px;*/
+a.dialpic{
   text-decoration:none;
   position:relative;
   display:block;
-  /*border:1px solid #666;*/
   padding:3px;
   margin-right:5px;
   float:left;
 }
 
-a.gallerypic span.zoom-icon{
-  /*visibility:hidden;*/
+a.dialpic span.needlepic{
   position:absolute;
   left:25%;
   top:53%;
-  /*filter:alpha(opacity=50);*/
-  /*-moz-opacity:0.5;
-  -khtml-opacity: 0.5;
-  opacity: 0.5;*/
   transform: rotate(35deg);
   transform-origin: 66% 40%;
 }
 
-/*a.gallerypic:hover span.zoom-icon{
-  visibility:visible;
-}*/
+a.dialpic span.value{
+    position:absolute;
+    left:40%;
+    top:10%;
+    font-size: 40px;
+}
+
+a.dialpic span.min{
+    position:absolute;
+    left:5%;
+    top:70%;
+    font-size: 40px;
+}
+
+a.dialpic span.max{
+    position:absolute;
+    left:80%;
+    top:70%;
+    font-size: 40px;
+}
 </style>
 
-<div>Value</div>
-<div id="value">{{value}}</div>
-<div>Min</div>
-<div id="min">{{min}}</div>
-<div>Max</div>
-<div id="max">{{max}}</div>
-
-<a class="gallerypic" title="">
+<a class="dialpic" title="">
   <img ng-src="img/semi-circle.png" class="pic" />
-  <span class="zoom-icon">
+  <span id="value" class="value">{{value}}</span>
+  <span id="min" class="min">{{min}}</span>
+  <span id="max" class="max">{{max}}</span>
+  <span class="needlepic">
       <img ng-src="img/pointer.png" ">
   </span>
 </a>
