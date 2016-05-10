@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .service('dialservice', function($http) {            
+        .service('dialservice', function($http) {
             var endpoint = 'https://widgister.herokuapp.com/challenge/frontend';
 
             function getData() {
