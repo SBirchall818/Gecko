@@ -19,7 +19,7 @@ gulp.task('inject', function () {
     var inject = require('gulp-inject');
 
     var injectSrc = gulp.src(['./public/css/*.css',
-                              './public/js/*.js',
+                              './public/app/*.js',
                               './public/dial/*.js'], {
         read: false
     });
