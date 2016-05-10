@@ -27,11 +27,6 @@ describe('dial directive', function() {
         expect(true).toEqual(true);
     });
 
-    // it('contain the sample dial text', function() {
-    //     var findh1 = directiveElem.find('h1');
-    //     expect(findh1.text()).toEqual('Sample Widget');
-    // });
-    
     it('should have min, max and value on the scope', function() {
         expect(scope.min).toBeDefined();
         expect(scope.max).toBeDefined();
@@ -54,5 +49,10 @@ describe('dial directive', function() {
         wrappedQueryResult = angular.element(queryResult);
 
         expect(wrappedQueryResult.text()).toEqual(scope.max.toString());
+    });
+
+    it('should have the display information available on scope', function() {
+        expect(scope.format).toBeDefined();
+        expect(scope.unit).toBeDefined();
     });
 });

@@ -11,6 +11,8 @@ angular.module('app', [])
             scope.min = 0;
             scope.max = 10;
             scope.value = 5;
+            scope.format = 'currency';
+            scope.unit = 'GBP';
         }
 
         return directive;
