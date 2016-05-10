@@ -17,9 +17,11 @@ module.exports = function(config) {
     files: [
       'public/lib/angular/angular.js',
       'public/lib/angular-mocks/angular-mocks.js',
-      'spec/**/*.js',
-      'public/dial/dial.html',
-      'public/dial/dial.directive.js'
+      'public/app/app.js',
+      'public/dial/dial.html',      
+      'public/dial/dial.service.js',      
+      'public/dial/dial.directive.js',
+      'spec/**/*.js'
     ],
 
 
