@@ -31,3 +31,10 @@ Then connect on [http://localhost:3010/]
 ```sh
 $ npm test
 ```
+
+## Ideas for future work
+* Break currency mappings out into its own testable component
+* Add exception handling for potentially incomplete data
+* Add data verification to dialservice
+* Add unit tests for different values of returned data
+* Properly mock out the dialservice
