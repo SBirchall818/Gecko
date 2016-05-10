@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <!--bower:css-->
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+        <!--endbower-->
+        <!-- bower:js -->
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-mocks/angular-mocks.js"></script>
+        <!-- endbower -->
+        
+        <!--inject:js-->
+        <script src="/dial/dial.directive.js"></script>
+        <!--endinject-->
+    </head>
+    <body>
+        <h1>Even Newer title </h1>
+        <div ng-app="app">
+            <dial></dial>
+            <input ng-model="value" type="text" />
+            {{value}}
+        </div>
+    </body>
+</html>

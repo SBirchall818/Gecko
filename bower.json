@@ -1,0 +1,40 @@
+{
+  "name": "gecko",
+  "description": "A speedometer widget set to custom bounds and values",
+  "main": "app.js",
+  "authors": [
+    "Simon Birchall"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/SBirchall818/Gecko",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "angular": "^1.5.5",
+    "angular-mocks": "^1.5.5"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "css/font-awesome.min.css",
+        "scss/font-awesome.scss"
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "gecko",
+  "version": "1.0.0",
+  "description": "A speedometer widget set to custom bounds and values",
+  "main": "app.js",
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "start": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SBirchall818/Gecko.git"
+  },
+  "author": "Simon Birchall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SBirchall818/Gecko/issues"
+  },
+  "homepage": "https://github.com/SBirchall818/Gecko#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-wiredep": "0.0.0",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-html2js-preprocessor": "^1.0.0",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7"
+  }
+}
