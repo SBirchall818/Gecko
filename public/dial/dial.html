@@ -1,6 +1,43 @@
+<style>
+a.gallerypic{
+  /*width:140px;*/
+  text-decoration:none;
+  position:relative;
+  display:block;
+  /*border:1px solid #666;*/
+  padding:3px;
+  margin-right:5px;
+  float:left;
+}
+
+a.gallerypic span.zoom-icon{
+  /*visibility:hidden;*/
+  position:absolute;
+  left:25%;
+  top:53%;
+  /*filter:alpha(opacity=50);*/
+  /*-moz-opacity:0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;*/
+  transform: rotate(35deg);
+  transform-origin: 66% 40%;
+}
+
+/*a.gallerypic:hover span.zoom-icon{
+  visibility:visible;
+}*/
+</style>
+
 <div>Value</div>
 <div id="value">{{value}}</div>
 <div>Min</div>
 <div id="min">{{min}}</div>
 <div>Max</div>
 <div id="max">{{max}}</div>
+
+<a class="gallerypic" title="">
+  <img ng-src="img/semi-circle.png" class="pic" />
+  <span class="zoom-icon">
+      <img ng-src="img/pointer.png" ">
+  </span>
+</a>
