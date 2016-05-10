@@ -5,7 +5,7 @@
     var httpBackend;
     var q;
     var endpoint = 'https://widgister.herokuapp.com/challenge/frontend';
-    var sampleResponse = {"value":34,"min":0,"max":200,"format":"currency","unit":"GBP"};
+    var sampleResponse = {value:34, min:0, max:200, format:'currency', unit:'GBP'};
 
     describe('The dial directive service', function () {
         beforeEach(function() {
