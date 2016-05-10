@@ -2,12 +2,21 @@
     'use strict';
 
     describe('dial directive', function() {
-        var compile, scope, templateCache, directiveElem, template, filter;
+        var compile;
+        var templateCache;
+        var directiveElem;
+        var template;
+        var filter;
+        var scope;
+        var httpBackend;
+
+        var endpoint = 'https://widgister.herokuapp.com/challenge/frontend';
+        var sampleResponse = {"value":34,"min":0,"max":200,"format":"currency","unit":"GBP"};
 
         beforeEach(function() {
             module('app');
 
-            inject(function ($templateCache, $compile, $rootScope, $filter) {
+            inject(function ($templateCache, $compile, $rootScope, $filter, $httpBackend) {
                 templateCache = $templateCache;
 
                 template = __html__['public/dial/dial.html'];   // How the file is referenced in the project root.
@@ -17,7 +26,11 @@
                 scope = $rootScope.$new();
 
                 filter = $filter;
+                httpBackend = $httpBackend;
             });
+
+            httpBackend.expect('GET', endpoint)
+                .respond(200, sampleResponse);
 
             directiveElem = getCompiledElement();
         });
@@ -27,6 +40,11 @@
             scope.$digest();
             return compiledDirective;
         }
+
+        afterEach(function() {
+            // httpBackend.verifyNoOutstandingExpectation();
+            // httpBackend.verifyNoOutstandingRequest();
+        });
 
         it('should pass', function () {
             expect(true).toEqual(true);
@@ -87,6 +105,14 @@
             wrappedQueryResult = angular.element(queryResult);
 
             expect(wrappedQueryResult.text()).toEqual('£10');
+        });
+        
+        it('should call dial service for data', function() {
+            httpBackend.flush();
+            
+            expect(scope.value).toEqual('£34');
+            expect(scope.min).toEqual('£0');
+            expect(scope.max).toEqual('£200');
         });
     });
 })();
