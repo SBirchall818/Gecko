@@ -31,4 +31,10 @@ describe('dial directive', function() {
         var findh1 = directiveElem.find('h1');
         expect(findh1.text()).toEqual('Sample Widget');
     });
+    
+    it('should have min max and value on the scope', function() {
+        expect(scope.min).toBeDefined();
+        expect(scope.max).toBeDefined();
+        expect(scope.value).toBeDefined();
+    });
 });

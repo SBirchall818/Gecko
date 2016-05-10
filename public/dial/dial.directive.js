@@ -1,8 +1,17 @@
 angular.module('app', [])
     .directive('dial', function() {
-        return {
+        var directive = {
             replace: false,
-            restrict: 'EA',
-            templateUrl: 'dial/dial.html'
+            restrict: 'E',
+            templateUrl: 'dial/dial.html',
+            link: link
         };
+
+        function link(scope, element, attrs) {
+            scope.min = 0;
+            scope.max = 10;
+            scope.value = 5;
+        }
+
+        return directive;
     });
