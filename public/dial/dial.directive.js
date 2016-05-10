@@ -20,15 +20,13 @@
                     value: 5
                 };
 
-                dialservice.getData().then(function(response) {
-                    data = response.data;
-                    setValuesToData(data);
-                    setRotation(data);
-                }, function (error) {
-                    console.log('An ERROR occurred:\n' + error);
-                });
-
+                // Initialize
                 setValuesToData(data);
+                retrieveData();
+
+                scope.refresh = function() {
+                    retrieveData();
+                };
 
                 // TODO: Break this out into a mappings module
                 function getCurrencySymbol(code) {
@@ -67,26 +65,42 @@
                     }
                 }
 
+                function retrieveData() {
+                    dialservice.getData().then(function(response) {
+                        data = response.data;
+                        setValuesToData(data);
+                        setRotation(data);
+                    }, function (error) {
+                        console.log('An ERROR occurred:\n' + error);
+                    });
+                }
+
                 function setRotation(data) {
                     var baseRotation = 35;
 
                     // Checking that min <= value <= max
                     if (data.max <= data.min) {
+                        setDegrees(0 + baseRotation);
                         return;
                     }
                     if (data.value > data.max) {
+                        setDegrees(180 + baseRotation);
                         return;
                     }
                     if (data.value < data.min) {
+                        setDegrees(0 + baseRotation);
                         return;
                     }
 
                     var fractionOfPi = (data.value - data.min) / (data.max - data.min);
                     var degreesRoundDial = 180 * fractionOfPi;
                     var degrees = degreesRoundDial + baseRotation;
+                    setDegrees(degrees);
 
-                    var needleElem = element.find('.needlepic');
-                    needleElem.css('transform','rotate(' + degrees + 'deg)');
+                    function setDegrees(degrees) {
+                        var needleElem = element.find('.needlepic');
+                        needleElem.css('transform','rotate(' + degrees + 'deg)');
+                    }
                 }
             }
 
