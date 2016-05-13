@@ -23,6 +23,10 @@ module.exports = function(config) {
       'public/dial/dial.directive.js',
       'spec/**/*.js'
     ],
+    
+    proxies:  {
+      '/img/': '/public/img/'
+    },
 
 
     // list of files to exclude
