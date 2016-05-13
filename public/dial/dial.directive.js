@@ -7,7 +7,8 @@
                 replace: false,
                 restrict: 'E',
                 templateUrl: 'dial/dial.html',
-                link: link
+                link: link,
+                scope: {}
             };
 
             function link(scope, element, attrs) {
@@ -81,6 +82,7 @@
 
                     // Checking that min <= value, value <= max and min < max
                     if (data.max <= data.min) {
+                        // Note that this check prevents divide by zero error.
                         setDegrees(0 + baseRotation);
                         return;
                     }
