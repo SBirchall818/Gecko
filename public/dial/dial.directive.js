@@ -40,8 +40,10 @@
                             return '€';
                         case 'USD':
                             return '$';
+                        case 'CHF':
+                            return 'ƒ';
                         default:
-                            return '$';
+                            return '£';
                     }
                 }
 
