@@ -53,61 +53,15 @@
                 expect(true).toEqual(true);
             });
 
-            it('should have min, max and value on the scope', function() {
-                expect(scope.min).toBeDefined();
-                expect(scope.max).toBeDefined();
-                expect(scope.value).toBeDefined();
-            });
-
-            it('should display the min, max and value', function() {
-
-                var queryResult = directiveElem[0].querySelector('#value');
-                var wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual(scope.value.toString());
-
-                queryResult = directiveElem[0].querySelector('#min');
-                wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual(scope.min.toString());
-
-                queryResult = directiveElem[0].querySelector('#max');
-                wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual(scope.max.toString());
+            it('should have min, max and value on the scope', function() {                
+                expect(scope.$$childHead.min).toBeDefined();
+                expect(scope.$$childHead.max).toBeDefined();
+                expect(scope.$$childHead.value).toBeDefined();
             });
 
             it('should have the display information available on scope', function() {
-                expect(scope.format).toBeDefined();
-                expect(scope.unit).toBeDefined();
-            });
-
-            it('should apply display filter', function() {
-                // TODO
-                // Currentyly this test does not add much value because all it is
-                // doing is checking if the $filter function can work in two places (which it can)
-                // This test should be re-written when data is injeted to ensure display is correct
-                var sym = '£';
-                var decimalPoints = 0;
-                var filterType = 'currency';
-                scope.min = filter(filterType)(0, sym, decimalPoints);
-                scope.max = filter(filterType)(10, sym, decimalPoints);
-                scope.value = filter(filterType)(5, sym, decimalPoints);
-
-                var queryResult = directiveElem[0].querySelector('#value');
-                var wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual('£5');
-
-                queryResult = directiveElem[0].querySelector('#min');
-                wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual('£0');
-
-                queryResult = directiveElem[0].querySelector('#max');
-                wrappedQueryResult = angular.element(queryResult);
-
-                expect(wrappedQueryResult.text()).toEqual('£10');
+                expect(scope.$$childHead.format).toBeDefined();
+                expect(scope.$$childHead.unit).toBeDefined();
             });
         });
 
@@ -118,9 +72,9 @@
                 mockGetDataPromise.resolve({data:sampleResponse});
                 scope.$digest();
 
-                expect(scope.value).toEqual('£34');
-                expect(scope.min).toEqual('£0');
-                expect(scope.max).toEqual('£200');
+                expect(scope.$$childHead.value).toEqual('£34');
+                expect(scope.$$childHead.min).toEqual('£0');
+                expect(scope.$$childHead.max).toEqual('£200');
             });
         });
     });
