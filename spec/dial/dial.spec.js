@@ -8,15 +8,26 @@
         var template;
         var filter;
         var scope;
-        var httpBackend;
 
         var endpoint = 'https://widgister.herokuapp.com/challenge/frontend';
         var sampleResponse = {value:34, min:0, max:200, format:'currency', unit:'GBP'};
+        var mockGetDataPromise;
 
         beforeEach(function() {
-            module('app');
+            module('app', function($provide) {
+                $provide.service('dialservice', function($q) {
+                    var mock = {getData: function() {}};
+                    
+                    mock.getData = spyOn(mock, 'getData').and.callFake(function() {
+                        mockGetDataPromise = $q.defer();
+                        return mockGetDataPromise.promise;
+                    });
+                    
+                    return mock;
+                });                
+            });
 
-            inject(function ($templateCache, $compile, $rootScope, $filter, $httpBackend) {
+            inject(function ($templateCache, $compile, $rootScope, $filter) {
                 templateCache = $templateCache;
 
                 template = __html__['public/dial/dial.html'];   // How the file is referenced in the project root.
@@ -26,11 +37,7 @@
                 scope = $rootScope.$new();
 
                 filter = $filter;
-                httpBackend = $httpBackend;
             });
-
-            httpBackend.expect('GET', endpoint)
-                .respond(200, sampleResponse);
 
             directiveElem = getCompiledElement();
         });
@@ -41,7 +48,7 @@
             return compiledDirective;
         }
 
-        describe('before getData', function() {
+        describe('before getData provides server data', function() {
             it('should pass', function () {
                 expect(true).toEqual(true);
             });
@@ -107,15 +114,9 @@
         describe('after getData', function() {
             // TODO: Test with different sets of returned data (euros etc.)
 
-            // TODO: properly mock the dialservice, this is currently more of an integration test
-
-            afterEach(function() {
-                httpBackend.verifyNoOutstandingExpectation();
-                httpBackend.verifyNoOutstandingRequest();
-            });
-
             it('should call dial service for data', function() {
-                httpBackend.flush();
+                mockGetDataPromise.resolve({data:sampleResponse});
+                scope.$digest();
 
                 expect(scope.value).toEqual('£34');
                 expect(scope.min).toEqual('£0');
