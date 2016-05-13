@@ -33,12 +33,12 @@ $ npm test
 ```
 
 ## Ideas for future work
-* Move CSS stylings from dial.html into separate file
+* Move CSS stylings from dial.html into separate file [DONE]
 * Add retroactive unit tests for needle position logic in dial.directive.js
-* Fix the warnings that adding the images have caused when running tests for pointer.png and semi-circle.png
+* Fix the warnings that adding the images have caused when running tests for pointer.png and semi-circle.png [DONE]
 * Break currency mappings out into its own testable component
 * Add exception handling for potentially incomplete data
 * Add data verification to dialservice
 * Add unit tests for different values of returned data
-* Properly mock out the dialservice in dial.spec.js
+* Properly mock out the dialservice in dial.spec.js [DONE]
 * Implement a visual display [DONE]
