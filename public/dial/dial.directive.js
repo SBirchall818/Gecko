@@ -12,7 +12,7 @@
 
             function link(scope, element, attrs) {
                 var decimalPoints = 0;
-                var data = {
+                var initialData = {
                     format: 'currency',
                     unit: 'GBP',
                     min: 0,
@@ -21,13 +21,15 @@
                 };
 
                 // Initialize
-                setValuesToData(data);
+                setValuesToData(initialData);
                 retrieveData();
 
+                // Public functions
                 scope.refresh = function() {
                     retrieveData();
                 };
 
+                // Private functions
                 // TODO: Break this out into a mappings module
                 function getCurrencySymbol(code) {
                     switch (code){
@@ -67,9 +69,8 @@
 
                 function retrieveData() {
                     dialservice.getData().then(function(response) {
-                        data = response.data;
-                        setValuesToData(data);
-                        setRotation(data);
+                        setValuesToData(response.data);
+                        setRotation(response.data);
                     }, function (error) {
                         console.log('An ERROR occurred:\n' + error);
                     });
@@ -78,7 +79,7 @@
                 function setRotation(data) {
                     var baseRotation = 35;
 
-                    // Checking that min <= value <= max
+                    // Checking that min <= value, value <= max and min < max
                     if (data.max <= data.min) {
                         setDegrees(0 + baseRotation);
                         return;
