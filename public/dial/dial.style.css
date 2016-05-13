@@ -1,0 +1,39 @@
+a.dialpic{
+  text-decoration:none;
+  position:relative;
+  display:block;
+  padding:3px;
+  padding-top: 50px;
+  margin-right:5px;
+  float:left;
+}
+
+a.dialpic span.needlepic{
+  position:absolute;
+  left:25%;
+  top:58%;
+  transform: rotate(35deg);
+  transform-origin: 66% 40%;
+  transition: 300ms ease all;
+}
+
+a.dialpic span.value{
+    position:absolute;
+    left:32%;
+    top:10%;
+    font-size: 80px;
+}
+
+a.dialpic span.min{
+    position:absolute;
+    left:5%;
+    top:75%;
+    font-size: 40px;
+}
+
+a.dialpic span.max{
+    position:absolute;
+    left:80%;
+    top:75%;
+    font-size: 40px;
+}

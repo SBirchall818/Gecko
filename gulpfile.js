@@ -18,7 +18,7 @@ gulp.task('inject', function () {
     var wiredep = require('wiredep').stream;
     var inject = require('gulp-inject');
 
-    var injectSrc = gulp.src(['./public/css/*.css',
+    var injectSrc = gulp.src(['./public/dial/*.css',
                               './public/app/*.js',
                               './public/dial/*.js'], {
         read: false
